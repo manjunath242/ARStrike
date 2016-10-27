@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ARStrike</string>
+    <string name="hello">RendererText</string>
 </resources>
