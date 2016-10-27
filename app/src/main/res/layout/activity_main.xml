@@ -15,4 +15,15 @@
         android:layout_height="match_parent"
         android:id="@+id/java_camera_view"
         />
+
+    <Button
+        android:text="Render"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:id="@+id/render_button"
+        tools:text="Render"
+        android:onClick="onRenderClick" />
 </RelativeLayout>

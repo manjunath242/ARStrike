@@ -1,9 +1,11 @@
 package com.myapp.manju.arstrike;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.view.View;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -111,4 +113,15 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         Imgproc.Canny(imageGray,imageCanny,50,150);
         return imageCanny;
     }
+
+
+    public void onRenderClick(View v)
+    {
+        if(v.getId()==R.id.render_button)
+        {
+            Intent i = new Intent(MainActivity.this, Renderer.class);
+            startActivity(i);
+        }
+    }
+
 }
