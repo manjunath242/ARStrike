@@ -1,25 +1,19 @@
 package com.myapp.manju.arstrike;
 
-<<<<<<< HEAD
 import android.content.Intent;
-=======
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
->>>>>>> 997a79aa48541a381f83a663861685acb77770a3
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
-<<<<<<< HEAD
 import android.view.View;
-=======
 import android.view.WindowManager;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
->>>>>>> 997a79aa48541a381f83a663861685acb77770a3
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -64,12 +58,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -86,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         javaCameraView=(JavaCameraView)findViewById(R.id.java_camera_view);
         javaCameraView.setVisibility(SurfaceView.VISIBLE);
         javaCameraView.setCvCameraViewListener(this);
-
-
 
 
     }
@@ -148,8 +134,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         return imageCanny;
     }
 
-<<<<<<< HEAD
-
     public void onRenderClick(View v)
     {
         if(v.getId()==R.id.render_button)
@@ -169,41 +153,4 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         }
     }
 
-=======
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
->>>>>>> 997a79aa48541a381f83a663861685acb77770a3
 }

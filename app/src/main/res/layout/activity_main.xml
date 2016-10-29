@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-<<<<<<< HEAD
         android:layout_marginBottom="41dp"
         android:id="@+id/render_button"
         tools:text="Render"
@@ -39,10 +38,8 @@
         android:layout_above="@+id/render_button"
         android:layout_alignLeft="@+id/render_button"
         android:layout_alignStart="@+id/render_button" />
-=======
         android:layout_marginBottom="63dp"
         android:id="@+id/BRender"
         android:onClick="onButtonClick" />
 
->>>>>>> 997a79aa48541a381f83a663861685acb77770a3
 </RelativeLayout>

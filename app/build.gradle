@@ -34,9 +34,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':openCVLibrary249')
     compile files('src/main/jniLibs/jpct_ae.jar')
-<<<<<<< HEAD
-=======
     compile files('src/main/jniLibs/alien3d-engine.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
->>>>>>> 997a79aa48541a381f83a663861685acb77770a3
+
+
 }
