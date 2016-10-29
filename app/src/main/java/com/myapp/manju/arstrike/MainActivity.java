@@ -119,7 +119,17 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     {
         if(v.getId()==R.id.render_button)
         {
-            Intent i = new Intent(MainActivity.this, Renderer.class);
+            //Intent i = new Intent(MainActivity.this, Renderer.class);
+            Intent i = new Intent(MainActivity.this, EngineActivity.class);
+            startActivity(i);
+        }
+    }
+
+    public void onEngineClick(View v)
+    {
+        if(v.getId()==R.id.engine_button)
+        {
+            Intent i = new Intent(MainActivity.this, EngineActivity.class);
             startActivity(i);
         }
     }

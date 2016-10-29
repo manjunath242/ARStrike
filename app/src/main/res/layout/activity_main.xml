@@ -26,4 +26,16 @@
         android:id="@+id/render_button"
         tools:text="Render"
         android:onClick="onRenderClick" />
+
+    <Button
+        android:text="Engine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/engine_button"
+        tools:text="Engine"
+        android:onClick="onEngineClick (MainActivity)"
+        android:layout_above="@+id/render_button"
+        android:layout_alignLeft="@+id/render_button"
+        android:layout_alignStart="@+id/render_button" />
 </RelativeLayout>
