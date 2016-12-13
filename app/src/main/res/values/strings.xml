@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ARStrike</string>
     <string name="hello">RendererText</string>
+    <string name="min_treshold">min_treshold</string>
 </resources>

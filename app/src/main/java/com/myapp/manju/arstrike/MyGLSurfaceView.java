@@ -24,22 +24,29 @@ import android.view.MotionEvent;
  * This view can also be used to capture touch events, such as a user
  * interacting with drawn objects.
  */
-public class MyGLSurfaceView extends GLSurfaceView {
+public class MyGLSurfaceView extends MyGLView {
 
-    private final MyGLRenderer mRenderer;
 
     public MyGLSurfaceView(Context context) {
         super(context);
 
+        super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+
         // Create an OpenGL ES 2.0 context.
         setEGLContextClientVersion(2);
 
-        // Set the Renderer for drawing on the GLSurfaceView
-        mRenderer = new MyGLRenderer();
-        setRenderer(mRenderer);
+        super.CreateRenderer();
 
         // Render the view only when there is a change in the drawing data
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+    }
+
+
+
+    public void Load3ds()
+    {
+        mRenderer.Add3dModels();
+
     }
 
     private final float TOUCH_SCALE_FACTOR = 180.0f / 320;
@@ -52,6 +59,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
         // and other input controls. In this case, you are only
         // interested in events where the touch position changed.
 
+
+        /*
         float x = e.getX();
         float y = e.getY();
 
@@ -79,6 +88,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
         mPreviousX = x;
         mPreviousY = y;
+        */
         return true;
     }
 

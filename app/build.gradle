@@ -20,9 +20,7 @@ android {
     sourceSets {
         main {
             jni.srcDirs = ['src/main/jni', 'src/main/jniLibs/']
-            res.srcDirs = ['src/main/res', 'src/main/res/2', 'src/main/res/3dObjects', 'src/main/res/3dObjectss']
-            assets.srcDirs = ['src/main/assets', 'src/main/assets/3dObjects', 'src/main/assets/Objects3d']
-            resources.srcDirs = ['src/main/resources', 'src/main/resources/3dObj']
+            res.srcDirs = ['src/main/res', 'src/main/res/2', 'src/main/res/3dObjects']
         }
     }
 }
@@ -38,5 +36,6 @@ dependencies {
     compile files('src/main/jniLibs/jpct_ae.jar')
     compile files('src/main/jniLibs/alien3d-engine.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+
 
 }

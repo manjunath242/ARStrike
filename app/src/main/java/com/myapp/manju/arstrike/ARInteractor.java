@@ -1,6 +1,7 @@
 package com.myapp.manju.arstrike;
 
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.support.v7.app.AppCompatActivity;
@@ -26,11 +27,13 @@ import org.opencv.imgproc.Imgproc;
 
 import static com.myapp.manju.arstrike.R.id.my_stage;
 
-public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
+public class ARInteractor extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     OpenGLES20Activity rendererObject;
     private GLSurfaceView mGLView;
     private Stage stage;
+
+
 
     private static String TAG = "MainActivity";
     JavaCameraView javaCameraView;
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     static {
 
+
     }
 
     @Override
@@ -62,19 +66,33 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
         super.onCreate(savedInstanceState);
 
+        // It talks from itself, please refer to android developer documentation.
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
+
+        // Fullscreen is not necessary... it's up to you.
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.mergertest);
+        // attach our glSurfaceView to the one in the XML file.
+        mGLView = (GLSurfaceView) findViewById(R.id.glsurfaceview);
+
         // Create a GLSurfaceView instance and set it
         // as the ContentView for this Activity
         mGLView = new MyGLSurfaceView(this);
         setContentView(mGLView);
 
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.mergertest);
 
-        javaCameraView=(JavaCameraView)findViewById(R.id.java_camera_view);
+        javaCameraView=(JavaCameraView)findViewById(R.id.gl_camera_view);
         javaCameraView.setVisibility(SurfaceView.VISIBLE);
         javaCameraView.setCvCameraViewListener(this);
 
+        mGLView.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
 
+        // Use a surface format with an Alpha channel:
+        mGLView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
     }
 
     @Override
@@ -113,9 +131,9 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     @Override
     public void onCameraViewStarted(int width, int height) {
-        mRGBA = new Mat(height, width, CvType.CV_8UC4);
-        imageGray = new Mat(height, width, CvType.CV_8UC1);
-        imageCanny = new Mat(height, width, CvType.CV_8UC1);
+       // mRGBA = new Mat(height, width, CvType.CV_8UC4);
+        //imageGray = new Mat(height, width, CvType.CV_8UC1);
+        //imageCanny = new Mat(height, width, CvType.CV_8UC1);
 
 
     }
@@ -128,40 +146,10 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRGBA = inputFrame.rgba();
-        Imgproc.cvtColor(mRGBA, imageGray, Imgproc.COLOR_RGB2GRAY);
-        Imgproc.Canny(imageGray, imageCanny, 50, 150);
-        return imageCanny;
+       // Imgproc.cvtColor(mRGBA, imageGray, Imgproc.COLOR_RGB2GRAY);
+        //Imgproc.Canny(imageGray, imageCanny, 50, 150);
+        return mRGBA;
     }
 
-    public void onGestureClick(View v)
-    {
-        if(v.getId()==R.id.btn_gestures)
-        {
-            //Intent i = new Intent(MainActivity.this, Renderer.class);
-            Intent i = new Intent(MainActivity.this, MergerTest.class);
-            // Intent i = new Intent(MainActivity.this, MainActivitySample.class);
-            startActivity(i);
-        }
-    }
-
-    public void onRenderClick(View v)
-    {
-        if(v.getId()==R.id.render_button)
-        {
-            //Intent i = new Intent(MainActivity.this, Renderer.class);
-            Intent i = new Intent(MainActivity.this, MergerTest.class);
-           // Intent i = new Intent(MainActivity.this, MainActivitySample.class);
-            startActivity(i);
-        }
-    }
-
-    public void onEngineClick(View v)
-    {
-        if(v.getId()==R.id.engine_button)
-        {
-            Intent i = new Intent(MainActivity.this, ARInteractor.class);
-            startActivity(i);
-        }
-    }
 
 }
