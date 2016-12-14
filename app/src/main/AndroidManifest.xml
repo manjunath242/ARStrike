@@ -22,6 +22,7 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".MainActivitySample"></activity>
         <activity android:name=".EngineActivity"></activity>
         <activity android:name=".ARInteractor"></activity>
         <activity android:name=".MergerTest"></activity>

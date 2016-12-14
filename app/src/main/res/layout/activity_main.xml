@@ -34,12 +34,9 @@
         android:layout_marginBottom="15dp"
         android:id="@+id/engine_button"
         tools:text="Engine"
-        android:onClick="onEngineClick (MainActivity)"
+        android:onClick="onEngineClick"
         android:layout_above="@+id/render_button"
         android:layout_alignLeft="@+id/render_button"
         android:layout_alignStart="@+id/render_button" />
-        android:layout_marginBottom="63dp"
-        android:id="@+id/BRender"
-        android:onClick="onButtonClick" />
 
 </RelativeLayout>

@@ -100,6 +100,26 @@ public class MainActivitySample extends Activity implements OnTouchListener, CvC
             }
         }
     };
+    JavaCameraView javaCameraView;
+
+    BaseLoaderCallback nLoaderCallback = new BaseLoaderCallback(this) {
+        @Override
+        public void onManagerConnected(int status) {
+            switch (status) {
+                case BaseLoaderCallback.SUCCESS: {
+                    mOpenCvCameraView.enableView();
+                    mOpenCvCameraView.setOnTouchListener(MainActivitySample.this);
+                    break;
+                }
+                default: {
+                    super.onManagerConnected(status);
+                    break;
+                }
+            }
+
+            super.onManagerConnected(status);
+        }
+    };
 
     public MainActivitySample() {
         Log.i(TAG, "Instantiated new " + this.getClass());
@@ -154,8 +174,18 @@ public class MainActivitySample extends Activity implements OnTouchListener, CvC
     @Override
     public void onResume()
     {
+       // super.onResume();
+        //OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
+        //OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, nLoaderCallback);
+
         super.onResume();
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        if (!OpenCVLoader.initDebug()) {
+            Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
+        } else {
+            Log.d(TAG, "OpenCV library found inside package. Using it!");
+            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+        }
     }
 
     public void onDestroy() {

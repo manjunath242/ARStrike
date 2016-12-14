@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     {
         if(v.getId()==R.id.engine_button)
         {
-            Intent i = new Intent(MainActivity.this, ARInteractor.class);
+            Intent i = new Intent(MainActivity.this, MainActivitySample.class);
             startActivity(i);
         }
     }

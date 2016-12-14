@@ -34,6 +34,22 @@ class AsyncServiceHelper
         }
     }
 
+  /*  public static boolean initOpenCV(String Version, final Context AppContext,
+                                     final LoaderCallbackInterface Callback) {
+        AsyncServiceHelper helper = new AsyncServiceHelper(Version, AppContext,
+                Callback);
+        Intent intent = new Intent("org.opencv.engine.BIND");
+        intent.setPackage("org.opencv.engine");
+        if (AppContext.bindService(intent, helper.mServiceConnection,
+                Context.BIND_AUTO_CREATE)) {
+            return true;
+        } else {
+            AppContext.unbindService(helper.mServiceConnection);
+            InstallService(AppContext, Callback);
+            return false;
+        }
+    } */
+
     protected AsyncServiceHelper(String Version, Context AppContext, LoaderCallbackInterface Callback)
     {
         mOpenCVersion = Version;
